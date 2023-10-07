@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="main-title"><b>Images</b></h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Image name</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @images.present? %>
+      <% @images.each_with_index do |image, ind| %>
+        <tr>
+          <td class="action-btn"><%= ind + 1 %></td>
+          <td><%= image.image_name %></td>
+          <td class="action-btn"><%= link_to 'Show', image, class: "btn btn-info"%></td>
+          <td class="action-btn"><%= link_to 'Edit', edit_image_path(image), class: "btn btn-primary" %></td>
+          <td class="action-btn"><%= link_to 'Destroy', image, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr><td colspan="4" class="no-data-found">Images not found !</td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Upload New Image', new_image_path, class: "btn btn-primary new-btn" %>
